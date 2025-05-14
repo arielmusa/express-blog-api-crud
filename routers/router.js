@@ -1,7 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import { posts } from "../data/posts.js";
-import { index, show } from "../controllers/postsController.js";
+import { index, show, store } from "../controllers/postsController.js";
 
 const router = express.Router();
 const { APP_HOST, APP_PORT } = process.env;
@@ -19,9 +19,7 @@ router.get("", index);
 router.get("/:id", show);
 
 // STORE
-router.post("", (req, res) => {
-  res.send("creazione post");
-});
+router.post("", store);
 
 // UPDATE
 router.put("/:id", (req, res) => {

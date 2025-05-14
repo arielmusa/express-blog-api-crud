@@ -9,4 +9,8 @@ const show = (req, res) => {
   const post = posts.find((post) => post.id === id);
   res.json(post);
 };
-export { index, show };
+
+const store = (req, res) => {
+  res.send("creazione post");
+};
+export { index, show, store };
