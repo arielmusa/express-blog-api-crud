@@ -13,4 +13,9 @@ const show = (req, res) => {
 const store = (req, res) => {
   res.send("creazione post");
 };
-export { index, show, store };
+
+const update = (req, res) => {
+  const id = parseInt(req.params.id);
+  res.send(`Aggiornamento dati post id: ${id}`);
+};
+export { index, show, store, update };
