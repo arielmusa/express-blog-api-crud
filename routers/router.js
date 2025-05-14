@@ -1,7 +1,13 @@
 import express from "express";
 import "dotenv/config";
 import { posts } from "../data/posts.js";
-import { index, show, store, update } from "../controllers/postsController.js";
+import {
+  index,
+  show,
+  store,
+  update,
+  modify,
+} from "../controllers/postsController.js";
 
 const router = express.Router();
 const { APP_HOST, APP_PORT } = process.env;
@@ -25,10 +31,7 @@ router.post("", store);
 router.put("/:id", update);
 
 // MODIFY
-router.patch("/:id", (req, res) => {
-  const { id } = req.params;
-  res.send(`Modifica post id: ${id}`);
-});
+router.patch("/:id", modify);
 
 // DESTROY
 router.delete("/:id", (req, res) => {

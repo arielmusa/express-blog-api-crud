@@ -18,4 +18,9 @@ const update = (req, res) => {
   const id = parseInt(req.params.id);
   res.send(`Aggiornamento dati post id: ${id}`);
 };
-export { index, show, store, update };
+
+const modify = (req, res) => {
+  const { id } = req.params;
+  res.send(`Modifica post id: ${id}`);
+};
+export { index, show, store, update, modify };
