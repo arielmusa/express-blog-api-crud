@@ -23,4 +23,9 @@ const modify = (req, res) => {
   const { id } = req.params;
   res.send(`Modifica post id: ${id}`);
 };
-export { index, show, store, update, modify };
+
+const destroy = (req, res) => {
+  const { id } = req.params;
+  res.send(`Eliminazione post id: ${id}`);
+};
+export { index, show, store, update, modify, destroy };

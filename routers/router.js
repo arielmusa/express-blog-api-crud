@@ -7,6 +7,7 @@ import {
   store,
   update,
   modify,
+  destroy,
 } from "../controllers/postsController.js";
 
 const router = express.Router();
@@ -34,9 +35,6 @@ router.put("/:id", update);
 router.patch("/:id", modify);
 
 // DESTROY
-router.delete("/:id", (req, res) => {
-  const { id } = req.params;
-  res.send(`Eliminazione post id: ${id}`);
-});
+router.delete("/:id", destroy);
 
 export { router };
