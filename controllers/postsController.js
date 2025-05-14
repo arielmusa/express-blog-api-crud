@@ -25,7 +25,9 @@ const modify = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  const { id } = req.params;
-  res.send(`Eliminazione post id: ${id}`);
+  const id = parseInt(req.params.id);
+  console.log(`Eliminazione post id: ${id}`);
+  res.status(204);
+  posts.splice(posts.indexOf(posts.find((post) => post.id === id)), 1);
 };
 export { index, show, store, update, modify, destroy };
