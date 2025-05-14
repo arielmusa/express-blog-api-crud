@@ -1,7 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import { posts } from "../data/posts.js";
-import { index } from "../controllers/postsController.js";
+import { index, show } from "../controllers/postsController.js";
 
 const router = express.Router();
 const { APP_HOST, APP_PORT } = process.env;
@@ -16,11 +16,7 @@ posts.forEach((item) => {
 router.get("", index);
 
 // SHOW
-router.get("/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  const post = posts.find((post) => post.id === id);
-  res.json(post);
-});
+router.get("/:id", show);
 
 // STORE
 router.post("", (req, res) => {

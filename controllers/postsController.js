@@ -4,4 +4,9 @@ const index = (req, res) => {
   res.json(posts);
 };
 
-export { index };
+const show = (req, res) => {
+  const id = parseInt(req.params.id);
+  const post = posts.find((post) => post.id === id);
+  res.json(post);
+};
+export { index, show };
