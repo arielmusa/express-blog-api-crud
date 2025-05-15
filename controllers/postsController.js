@@ -30,19 +30,33 @@ const show = (req, res) => {
 };
 
 const store = (req, res) => {
-  res.send("creazione post");
+  const { title, content, image, tags } = req.body;
+  console.log(req.body);
+  let maxId = 0;
+  for (const post of posts) {
+    if (post.id > maxId) maxId = post.id;
+  }
+
+  const newPost = { id: ++maxId, title, content, image, tags };
+  posts.push(newPost);
+  res.status(201).json(newPost);
 };
 
 const update = (req, res) => {
   const id = parseInt(req.params.id);
   const post = posts.find((post) => post.id === id);
+  const { title, content, image, tags } = req.body;
   if (!post) {
     return res.status(404).json({
       error: "Not found",
       message: "Item not found",
     });
   }
-  res.send(`Aggiornamento dati post id: ${id}`);
+  post.title = title ?? post.title;
+  post.content = content ?? post.content;
+  post.image = image ?? post.image;
+  post.tags = tags ?? post.tags;
+  res.json(post);
 };
 
 const modify = (req, res) => {
