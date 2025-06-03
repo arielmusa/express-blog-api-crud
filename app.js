@@ -12,7 +12,7 @@ const url = `${APP_HOST}${APP_PORT ? ":" + APP_PORT : ""}`;
 
 app.use(
   cors({
-    origin: "http://localhost:5173/",
+    origin: "http://localhost:5173",
   })
 );
 
